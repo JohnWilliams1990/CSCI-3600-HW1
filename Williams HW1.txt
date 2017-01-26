@@ -1,0 +1,46 @@
+John Williams
+105201054
+web api hw1
+
+
+REQUEST LINE : method UrI 
+
+GET									verb 
+https://www.googleapis.com/books/v1/volumes/BlPZ3sHHWpMC		address	
+02:05:01.446								time of event
+							
+Request Headers:
+cache-control:"no-cache"						don't use client cache, only new information
+Postman-Token:"4135154f-c8c6-40e2-9c15-1b833dc9c324"			postman token 
+User-Agent:"PostmanRuntime/3.0.9"					user postman version					
+Accept:"*/*"								accept all content
+Host:"www.googleapis.com"						host site location
+accept-encoding:"gzip, deflate"						acceptable encoding 
+
+
+Response Headers:
+expires:"Wed, 25 Jan 2017 09:04:56 GMT"					date and time that the information expires to 
+date:"Wed, 25 Jan 2017 09:04:56 GMT"					physical date representation
+cache-control:"private, max-age=0, must-revalidate, no-transform"	if cacheing, what conditions
+etag:""vFp1TYDMppbWxVi0Wgw_upD83cI/ktX-vPjdKMtlqZzGDv34KH9gGU0""	Etag that is a hash of the cache for updating
+
+vary:									variations 
+0:"Origin"
+1:"X-Origin"
+content-type:"application/json; charset=UTF-8"				content is json set as text encoding UTF-8
+x-content-type-options:"nosniff"					security 
+x-frame-options:"SAMEORIGIN"
+x-xss-protection:"1; mode=block"
+content-length:"4237"							total length of the responce
+server:"GSE"								server: google server
+alt-svc:"quic=":443"; ma=2592000; v="35,34""				
+
+
+Response Body:								
+kind:"books#volume"
+id:"BlPZ3sHHWpMC"
+etag:"dWo9+QVSCss"
+selfLink:"https://www.googleapis.com/books/v1/volumes/BlPZ3sHHWpMC"
+volumeInfo:
+saleInfo:
+accessInfo:

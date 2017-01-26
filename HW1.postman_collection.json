@@ -1,0 +1,59 @@
+{
+	"id": "298fd9f8-5f6e-8a64-cdb5-b79b3ca1a472",
+	"name": "HW1",
+	"description": "",
+	"order": [
+		"46e392c6-4b1a-8a20-c59b-8227c840fb0c",
+		"e8505af3-3b5e-0f6d-e311-305aae44a524"
+	],
+	"folders": [],
+	"timestamp": 1485043451374,
+	"owner": "1486249",
+	"public": false,
+	"requests": [
+		{
+			"id": "46e392c6-4b1a-8a20-c59b-8227c840fb0c",
+			"headers": "",
+			"url": "https://www.googleapis.com/books/v1/volumes?q={{book_title}} ",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": [
+				{
+					"key": "id",
+					"value": "id",
+					"type": "text",
+					"enabled": false
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var jsonData = JSON.parse(responseBody); // creates the json variable \r\nvar id = jsonData.items[0].id;// creates the id variable\r\nconsole.log(\"id:\" + id);\r\n\r\npostman.setEnvironmentVariable(\"book_id\", id);\r\n\r\nvar myVar = false;\r\nvar title = jsonData.items[0].volumeInfo.title;\r\n\r\ntests[\"Status code is 200\"] = responseCode.code === 200;\r\ntests[\"Response time is less than 1500ms\"] = responseTime < 1000;\r\n\r\nfor(var i = 0; i < jsonData.items.length; i++)\r\n{\r\n     title = jsonData.items[i].volumeInfo.title\r\n     \r\n                                            //console.log(\"title:\" + title);\r\n    if(!(title.includes(\"Turing\")))\r\n    {\r\n     myVar = true;   \r\n    }\r\n     console.log(\"Title Test for \"+\"'\"+title+\"'\"+\"----->\" + !myVar);\r\n     \r\n     // creates a test and a condition for the test after the '=' \r\n     // and incorporates the name into the test soas to distinguish the various tests \r\n     tests[\"Validate Book Title \" +\"'\"+title+\"'\"] = myVar === false;\r\n    \r\n    }\r\n    \r\n   // var something = getEnvironmentVariable(\"book_id\", book_id);\r\n    \r\n console.log(\"Number of books tested :\" + jsonData.items.length);\r\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1485405104545,
+			"name": "https://www.googleapis.com/books/v1/volumes?q={{Turing}} ",
+			"description": "",
+			"collectionId": "298fd9f8-5f6e-8a64-cdb5-b79b3ca1a472",
+			"responses": []
+		},
+		{
+			"id": "e8505af3-3b5e-0f6d-e311-305aae44a524",
+			"headers": "",
+			"url": "https://www.googleapis.com/books/v1/volumes/{{book_id}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": "\nvar jsonData = JSON.parse(responseBody); // creates the json variable \nvar id = jsonData.id;// creates the id variable\nconsole.log(\"id:\" + id);\nvar book_id = \"\";\n\nvar crap = postman.getEnvironmentVariable( \"book_id\",book_id);\n\nconsole.log(\"book_id:\" + crap);\n\n//tests[\"Validate Id\"] = id === book_id;\ntests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"Validate Id\"] = crap  === id;\n\n\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1485334560698,
+			"name": "https://www.googleapis.com/books/v1/volumes/{{book_id}}",
+			"description": "",
+			"collectionId": "298fd9f8-5f6e-8a64-cdb5-b79b3ca1a472",
+			"responses": []
+		}
+	]
+}
